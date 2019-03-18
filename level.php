@@ -11,9 +11,12 @@
 
   <body>
 <?php
-  $level = $_GET["level"];
+  $levelnum = $_GET["level"];
   $difficulty = $_GET["difficulty"];
   $hints = $_GET["hints"];
+  $level = file_get_contents('levels/level'.$levelnum.'.txt'); //get the level requested
+  $level = explode(" ", $level); //convert numbers in the level to an array separated by " "
+  unset($level[count($level) - 1]); //last element is empty using this method; remove it
 ?>
 	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="container">
@@ -38,7 +41,8 @@
 
 	<div class="container">
 		<div class="jumbotron text-center">
-			<h1> SudokuMaster </h1>
+			<h1> SudokuMaster: L <?php echo $levelnum; ?> </h1>
+
 		</div>
 	</div>
 
@@ -64,7 +68,7 @@
     <form id="form" method="GET" onSubmit="return validate();" action="leaderboard.php">
 		<table class="center" height="520" width="520">
 			<tr>
-				<td><input type="number" name="1-1" min="1" max="9" value="1"></td>
+				<td><input type="number" name="1-1" min="1" max="9" value=""></td>
 				<td><input type="number" name="2-2" min="1" max="9" value=""></td>
 				<td><input type="number" name="1-3" min="1" max="9" value=""></td>
 				<td><input type="number" name="1-4" min="1" max="9" value=""></td>
@@ -181,6 +185,7 @@
         <div class="col-sm-4">
 			<br>
             <a href="index.php" class="btn btn-danger"> Main Menu </a>
+            <h3><?php   print_r($level); ?></h3>
         </div>
     </div>
 
