@@ -5,8 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SudokuMaster Game Page</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="validate.js" type="text/javascript"></script>
+    <script src="timer.js" type="text/javascript"></script>
   </head>
 
   <body>

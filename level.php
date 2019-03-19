@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SudokuMaster Game Page</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	   <link rel="stylesheet" type="text/css" href="style.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="validate.js" type="text/javascript"></script>
   </head>
-
   <body>
 <?php
   $levelnum = $_GET["level"];
@@ -51,7 +51,9 @@
             <h3> Difficulty: Medium </h3>
         </div>
         <div class="col-sm-4">
-            <h3> Time Remaining: 4:32:05 </h3>
+              <h3> Time Remaining:</h3>
+              <h3 onload="timer()" id="timer">Time</h3>
+              <script src="timer.js" type="text/javascript"></script>
         </div>
         <div class="col-sm-4">
 			<br>
@@ -68,15 +70,15 @@
     <form id="form" method="GET" onSubmit="return validate();" action="leaderboard.php">
 		<table class="center" height="520" width="520">
 			<tr>
-				<td><input type="number" name="1-1" min="1" max="9" value=""></td>
-				<td><input type="number" name="2-2" min="1" max="9" value=""></td>
-				<td><input type="number" name="1-3" min="1" max="9" value=""></td>
-				<td><input type="number" name="1-4" min="1" max="9" value=""></td>
-				<td><input type="number" name="1-5" min="1" max="9" value=""></td>
-				<td><input type="number" name="1-6" min="1" max="9" value=""></td>
-				<td><input type="number" name="1-7" min="1" max="9" value=""></td>
-				<td><input type="number" name="1-8" min="1" max="9" value=""></td>
-				<td><input type="number" name="1-9" min="1" max="9" value=""></td>
+				<td><input type="number" name="1-1" min="1" max="9" value="<?php echo $level[0] ?>"></td>
+				<td><input type="number" name="2-2" min="1" max="9" value="<?php echo $level[1] ?>"></td>
+				<td><input type="number" name="1-3" min="1" max="9" value="<?php echo $level[2] ?>"></td>
+				<td><input type="number" name="1-4" min="1" max="9" value="<?php echo $level[3] ?>"></td>
+				<td><input type="number" name="1-5" min="1" max="9" value="<?php echo $level[4] ?>"></td>
+				<td><input type="number" name="1-6" min="1" max="9" value="<?php echo $level[5] ?>"></td>
+				<td><input type="number" name="1-7" min="1" max="9" value="<?php echo $level[6] ?>"></td>
+				<td><input type="number" name="1-8" min="1" max="9" value="<?php echo $level[7] ?>"></td>
+				<td><input type="number" name="1-9" min="1" max="9" value="<?php echo $level[8] ?>"></td>
 			</tr>
 			<tr>
 				<td><input type="number" name="2-1" min="1" max="9" value=""></td>
@@ -185,6 +187,7 @@
         <div class="col-sm-4">
 			<br>
             <a href="index.php" class="btn btn-danger"> Main Menu </a>
+            <!-- debug !-->
             <h3><?php   print_r($level); ?></h3>
         </div>
     </div>
