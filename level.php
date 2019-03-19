@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SudokuMaster Game Page</title>
-	   <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script src="validate.js" type="text/javascript"></script>
   </head>
@@ -13,10 +13,37 @@
 <?php
   $levelnum = $_GET["level"];
   $difficulty = $_GET["difficulty"];
+  $diffset = 11 - $difficulty;
   $hints = $_GET["hints"];
   $level = file_get_contents('levels/level'.$levelnum.'.txt'); //get the level requested
+  $levelstaple = file_get_contents('levels/Level'.$levelnum.'ANS.txt'); //get STAPLE numbers for each table i.e numbers we need in order to solve the table/have ONE unique solution
   $level = explode(" ", $level); //convert numbers in the level to an array separated by " "
+  $levelstaple = explode(" ", $levelstaple);
   unset($level[count($level) - 1]); //last element is empty using this method; remove it
+  unset($levelstaple[count($levelstaple) - 1]); //last element is empty using this method; remove it
+  $counter = 0; //counter for populating the table
+  $diffString = "";
+  if ($difficulty <= 2) {
+    $diffString = "Easy";
+  } elseif ($difficulty > 3 && $difficulty <= 7) {
+    $diffString = "Medium";
+  } else {
+    $diffString = "Hard";
+  }
+  function fillCell($x) {
+      global $levelstaple;
+      global $level;
+      global $difficulty;
+      if ($levelstaple[$x] == 0) {
+        if (rand(0, $difficulty * 2) == 1) {
+          return $level[$x];
+        }
+      }
+      else {
+        return $level[$x];
+      }
+  }
+  // TODO
 ?>
 	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="container">
@@ -41,14 +68,14 @@
 
 	<div class="container">
 		<div class="jumbotron text-center">
-			<h1> SudokuMaster: L <?php echo $levelnum; ?> </h1>
+			<h1> SudokuMaster: L<?php echo $levelnum; ?> </h1>
 
 		</div>
 	</div>
 
 	<div class="row">
         <div class="col-sm-4">
-            <h3> Difficulty: Medium </h3>
+            <h3> Difficulty: <?php echo $diffString;?> </h3>
         </div>
         <div class="col-sm-4">
               <h3> Time Remaining:</h3>
@@ -70,103 +97,103 @@
     <form id="form" method="GET" onSubmit="return validate();" action="leaderboard.php">
 		<table class="center" height="520" width="520">
 			<tr>
-				<td><input type="number" name="1-1" min="1" max="9" value="<?php echo $level[0] ?>"></td>
-				<td><input type="number" name="2-2" min="1" max="9" value="<?php echo $level[1] ?>"></td>
-				<td><input type="number" name="1-3" min="1" max="9" value="<?php echo $level[2] ?>"></td>
-				<td><input type="number" name="1-4" min="1" max="9" value="<?php echo $level[3] ?>"></td>
-				<td><input type="number" name="1-5" min="1" max="9" value="<?php echo $level[4] ?>"></td>
-				<td><input type="number" name="1-6" min="1" max="9" value="<?php echo $level[5] ?>"></td>
-				<td><input type="number" name="1-7" min="1" max="9" value="<?php echo $level[6] ?>"></td>
-				<td><input type="number" name="1-8" min="1" max="9" value="<?php echo $level[7] ?>"></td>
-				<td><input type="number" name="1-9" min="1" max="9" value="<?php echo $level[8] ?>"></td>
+				<td><input type="number" name="1-1" min="1" max="9" value="<?php echo fillCell(0) ?>"></td>
+				<td><input type="number" name="2-2" min="1" max="9" value="<?php echo fillCell(1) ?>"></td>
+				<td><input type="number" name="1-3" min="1" max="9" value="<?php echo fillCell(2) ?>"></td>
+				<td><input type="number" name="1-4" min="1" max="9" value="<?php echo fillCell(3) ?>"></td>
+				<td><input type="number" name="1-5" min="1" max="9" value="<?php echo fillCell(4) ?>"></td>
+				<td><input type="number" name="1-6" min="1" max="9" value="<?php echo fillCell(5) ?>"></td>
+				<td><input type="number" name="1-7" min="1" max="9" value="<?php echo fillCell(6) ?>"></td>
+				<td><input type="number" name="1-8" min="1" max="9" value="<?php echo fillCell(7) ?>"></td>
+				<td><input type="number" name="1-9" min="1" max="9" value="<?php echo fillCell(8) ?>"></td>
 			</tr>
 			<tr>
-				<td><input type="number" name="2-1" min="1" max="9" value=""></td>
-				<td><input type="number" name="2-2" min="1" max="9" value=""></td>
-				<td><input type="number" name="2-3" min="1" max="9" value=""></td>
-				<td><input type="number" name="2-4" min="1" max="9" value=""></td>
-				<td><input type="number" name="2-5" min="1" max="9" value=""></td>
-				<td><input type="number" name="2-6" min="1" max="9" value=""></td>
-				<td><input type="number" name="2-7" min="1" max="9" value=""></td>
-				<td><input type="number" name="2-8" min="1" max="9" value=""></td>
-				<td><input type="number" name="2-9" min="1" max="9" value=""></td>
+				<td><input type="number" name="2-1" min="1" max="9" value="<?php echo fillCell(9) ?>"></td>
+				<td><input type="number" name="2-2" min="1" max="9" value="<?php echo fillCell(10) ?>"></td>
+				<td><input type="number" name="2-3" min="1" max="9" value="<?php echo fillCell(11) ?>"></td>
+				<td><input type="number" name="2-4" min="1" max="9" value="<?php echo fillCell(12) ?>"></td>
+				<td><input type="number" name="2-5" min="1" max="9" value="<?php echo fillCell(13) ?>"></td>
+				<td><input type="number" name="2-6" min="1" max="9" value="<?php echo fillCell(14) ?>"></td>
+				<td><input type="number" name="2-7" min="1" max="9" value="<?php echo fillCell(15) ?>"></td>
+				<td><input type="number" name="2-8" min="1" max="9" value="<?php echo fillCell(16) ?>"></td>
+				<td><input type="number" name="2-9" min="1" max="9" value="<?php echo fillCell(17) ?>"></td>
 			</tr>
 			<tr>
-				<td><input type="number" name="3-1" min="1" max="9" value=""></td>
-				<td><input type="number" name="3-2" min="1" max="9" value=""></td>
-				<td><input type="number" name="3-3" min="1" max="9" value=""></td>
-				<td><input type="number" name="3-4" min="1" max="9" value=""></td>
-				<td><input type="number" name="3-5" min="1" max="9" value=""></td>
-				<td><input type="number" name="3-6" min="1" max="9" value=""></td>
-				<td><input type="number" name="3-7" min="1" max="9" value=""></td>
-				<td><input type="number" name="3-8" min="1" max="9" value=""></td>
-				<td><input type="number" name="3-9" min="1" max="9" value=""></td>
+				<td><input type="number" name="3-1" min="1" max="9" value="<?php echo fillCell(18) ?>"></td>
+				<td><input type="number" name="3-2" min="1" max="9" value="<?php echo fillCell(19) ?>"></td>
+				<td><input type="number" name="3-3" min="1" max="9" value="<?php echo fillCell(20) ?>"></td>
+				<td><input type="number" name="3-4" min="1" max="9" value="<?php echo fillCell(21) ?>"></td>
+				<td><input type="number" name="3-5" min="1" max="9" value="<?php echo fillCell(22) ?>"></td>
+				<td><input type="number" name="3-6" min="1" max="9" value="<?php echo fillCell(23) ?>"></td>
+				<td><input type="number" name="3-7" min="1" max="9" value="<?php echo fillCell(24) ?>"></td>
+				<td><input type="number" name="3-8" min="1" max="9" value="<?php echo fillCell(25) ?>"></td>
+				<td><input type="number" name="3-9" min="1" max="9" value="<?php echo fillCell(26) ?>"></td>
 			</tr>
 			<tr>
-				<td><input type="number" name="4-1" min="1" max="9" value=""></td>
-				<td><input type="number" name="4-2" min="1" max="9" value=""></td>
-				<td><input type="number" name="4-3" min="1" max="9" value=""></td>
-				<td><input type="number" name="4-4" min="1" max="9" value=""></td>
-				<td><input type="number" name="4-5" min="1" max="9" value=""></td>
-				<td><input type="number" name="4-6" min="1" max="9" value=""></td>
-				<td><input type="number" name="4-7" min="1" max="9" value=""></td>
-				<td><input type="number" name="4-8" min="1" max="9" value=""></td>
-				<td><input type="number" name="4-9" min="1" max="9" value=""></td>
+				<td><input type="number" name="4-1" min="1" max="9" value="<?php echo fillCell(27) ?>"></td>
+				<td><input type="number" name="4-2" min="1" max="9" value="<?php echo fillCell(28) ?>"></td>
+				<td><input type="number" name="4-3" min="1" max="9" value="<?php echo fillCell(29) ?>"></td>
+				<td><input type="number" name="4-4" min="1" max="9" value="<?php echo fillCell(30) ?>"></td>
+				<td><input type="number" name="4-5" min="1" max="9" value="<?php echo fillCell(31) ?>"></td>
+				<td><input type="number" name="4-6" min="1" max="9" value="<?php echo fillCell(32) ?>"></td>
+				<td><input type="number" name="4-7" min="1" max="9" value="<?php echo fillCell(33) ?>"></td>
+				<td><input type="number" name="4-8" min="1" max="9" value="<?php echo fillCell(34) ?>"></td>
+				<td><input type="number" name="4-9" min="1" max="9" value="<?php echo fillCell(35) ?>"></td>
 			</tr>
 			<tr>
-				<td><input type="number" name="5-1" min="1" max="9" value=""></td>
-				<td><input type="number" name="5-2" min="1" max="9" value=""></td>
-				<td><input type="number" name="5-3" min="1" max="9" value=""></td>
-				<td><input type="number" name="5-4" min="1" max="9" value=""></td>
-				<td><input type="number" name="5-5" min="1" max="9" value=""></td>
-				<td><input type="number" name="5-6" min="1" max="9" value=""></td>
-				<td><input type="number" name="5-7" min="1" max="9" value=""></td>
-				<td><input type="number" name="5-8" min="1" max="9" value=""></td>
-				<td><input type="number" name="5-9" min="1" max="9" value=""></td>
+				<td><input type="number" name="5-1" min="1" max="9" value="<?php echo fillCell(36) ?>"></td>
+				<td><input type="number" name="5-2" min="1" max="9" value="<?php echo fillCell(37) ?>"></td>
+				<td><input type="number" name="5-3" min="1" max="9" value="<?php echo fillCell(38) ?>"></td>
+				<td><input type="number" name="5-4" min="1" max="9" value="<?php echo fillCell(39) ?>"></td>
+				<td><input type="number" name="5-5" min="1" max="9" value="<?php echo fillCell(40) ?>"></td>
+				<td><input type="number" name="5-6" min="1" max="9" value="<?php echo fillCell(41) ?>"></td>
+				<td><input type="number" name="5-7" min="1" max="9" value="<?php echo fillCell(42) ?>"></td>
+				<td><input type="number" name="5-8" min="1" max="9" value="<?php echo fillCell(43) ?>"></td>
+				<td><input type="number" name="5-9" min="1" max="9" value="<?php echo fillCell(44) ?>"></td>
 			</tr>
 			<tr>
-				<td><input type="number" name="6-1" min="1" max="9" value=""></td>
-				<td><input type="number" name="6-2" min="1" max="9" value=""></td>
-				<td><input type="number" name="6-3" min="1" max="9" value=""></td>
-				<td><input type="number" name="6-4" min="1" max="9" value=""></td>
-				<td><input type="number" name="6-5" min="1" max="9" value=""></td>
-				<td><input type="number" name="6-6" min="1" max="9" value=""></td>
-				<td><input type="number" name="6-7" min="1" max="9" value=""></td>
-				<td><input type="number" name="6-8" min="1" max="9" value=""></td>
-				<td><input type="number" name="6-9" min="1" max="9" value=""></td>
+				<td><input type="number" name="6-1" min="1" max="9" value="<?php echo fillCell(45) ?>"></td>
+				<td><input type="number" name="6-2" min="1" max="9" value="<?php echo fillCell(46) ?>"></td>
+				<td><input type="number" name="6-3" min="1" max="9" value="<?php echo fillCell(47) ?>"></td>
+				<td><input type="number" name="6-4" min="1" max="9" value="<?php echo fillCell(48) ?>"></td>
+				<td><input type="number" name="6-5" min="1" max="9" value="<?php echo fillCell(49) ?>"></td>
+				<td><input type="number" name="6-6" min="1" max="9" value="<?php echo fillCell(50) ?>"></td>
+				<td><input type="number" name="6-7" min="1" max="9" value="<?php echo fillCell(51) ?>"></td>
+				<td><input type="number" name="6-8" min="1" max="9" value="<?php echo fillCell(52) ?>"></td>
+				<td><input type="number" name="6-9" min="1" max="9" value="<?php echo fillCell(53) ?>"></td>
 			</tr>
 			<tr>
-				<td><input type="number" name="7-1" min="1" max="9" value=""></td>
-				<td><input type="number" name="7-2" min="1" max="9" value=""></td>
-				<td><input type="number" name="7-3" min="1" max="9" value=""></td>
-				<td><input type="number" name="7-4" min="1" max="9" value=""></td>
-				<td><input type="number" name="7-5" min="1" max="9" value=""></td>
-				<td><input type="number" name="7-6" min="1" max="9" value=""></td>
-				<td><input type="number" name="7-7" min="1" max="9" value=""></td>
-				<td><input type="number" name="7-8" min="1" max="9" value=""></td>
-				<td><input type="number" name="7-9" min="1" max="9" value=""></td>
+				<td><input type="number" name="7-1" min="1" max="9" value="<?php echo fillCell(54) ?>"></td>
+				<td><input type="number" name="7-2" min="1" max="9" value="<?php echo fillCell(55) ?>"></td>
+				<td><input type="number" name="7-3" min="1" max="9" value="<?php echo fillCell(56) ?>"></td>
+				<td><input type="number" name="7-4" min="1" max="9" value="<?php echo fillCell(57) ?>"></td>
+				<td><input type="number" name="7-5" min="1" max="9" value="<?php echo fillCell(58) ?>"></td>
+				<td><input type="number" name="7-6" min="1" max="9" value="<?php echo fillCell(59) ?>"></td>
+				<td><input type="number" name="7-7" min="1" max="9" value="<?php echo fillCell(60) ?>"></td>
+				<td><input type="number" name="7-8" min="1" max="9" value="<?php echo fillCell(61) ?>"></td>
+				<td><input type="number" name="7-9" min="1" max="9" value="<?php echo fillCell(62) ?>"></td>
 			</tr>
 			<tr>
-				<td><input type="number" name="8-1" min="1" max="9" value=""></td>
-				<td><input type="number" name="8-2" min="1" max="9" value=""></td>
-				<td><input type="number" name="8-3" min="1" max="9" value=""></td>
-				<td><input type="number" name="8-4" min="1" max="9" value=""></td>
-				<td><input type="number" name="8-5" min="1" max="9" value=""></td>
-				<td><input type="number" name="8-6" min="1" max="9" value=""></td>
-				<td><input type="number" name="8-7" min="1" max="9" value=""></td>
-				<td><input type="number" name="8-8" min="1" max="9" value=""></td>
-				<td><input type="number" name="8-9" min="1" max="9" value=""></td>
+				<td><input type="number" name="8-1" min="1" max="9" value="<?php echo fillCell(63) ?>"></td>
+				<td><input type="number" name="8-2" min="1" max="9" value="<?php echo fillCell(64) ?>"></td>
+				<td><input type="number" name="8-3" min="1" max="9" value="<?php echo fillCell(65) ?>"></td>
+				<td><input type="number" name="8-4" min="1" max="9" value="<?php echo fillCell(66) ?>"></td>
+				<td><input type="number" name="8-5" min="1" max="9" value="<?php echo fillCell(67) ?>"></td>
+				<td><input type="number" name="8-6" min="1" max="9" value="<?php echo fillCell(68) ?>"></td>
+				<td><input type="number" name="8-7" min="1" max="9" value="<?php echo fillCell(69) ?>"></td>
+				<td><input type="number" name="8-8" min="1" max="9" value="<?php echo fillCell(70) ?>"></td>
+				<td><input type="number" name="8-9" min="1" max="9" value="<?php echo fillCell(71) ?>"></td>
 			</tr>
 			<tr>
-				<td><input type="number" name="nine1" min="1" max="9" value=""></td>
-				<td><input type="number" name="nine2" min="1" max="9" value=""></td>
-				<td><input type="number" name="nine3" min="1" max="9" value=""></td>
-				<td><input type="number" name="nine4" min="1" max="9" value=""></td>
-				<td><input type="number" name="nine5" min="1" max="9" value=""></td>
-				<td><input type="number" name="nine6" min="1" max="9" value=""></td>
-				<td><input type="number" name="nine7" min="1" max="9" value=""></td>
-				<td><input type="number" name="nine8" min="1" max="9" value=""></td>
-				<td><input type="number" name="nine9" min="1" max="9" value=""></td>
+				<td><input type="number" name="nine1" min="1" max="9" value="<?php echo fillCell(72) ?>"></td>
+				<td><input type="number" name="nine2" min="1" max="9" value="<?php echo fillCell(73) ?>"></td>
+				<td><input type="number" name="nine3" min="1" max="9" value="<?php echo fillCell(74) ?>"></td>
+				<td><input type="number" name="nine4" min="1" max="9" value="<?php echo fillCell(75) ?>"></td>
+				<td><input type="number" name="nine5" min="1" max="9" value="<?php echo fillCell(76) ?>"></td>
+				<td><input type="number" name="nine6" min="1" max="9" value="<?php echo fillCell(77) ?>"></td>
+				<td><input type="number" name="nine7" min="1" max="9" value="<?php echo fillCell(78) ?>"></td>
+				<td><input type="number" name="nine8" min="1" max="9" value="<?php echo fillCell(79) ?>"></td>
+				<td><input type="number" name="nine9" min="1" max="9" value="<?php echo fillCell(80) ?>"></td>
 			</tr>
 		</table>
     <input type="submit" class="btn btn-primary"></button>
@@ -188,7 +215,7 @@
 			<br>
             <a href="index.php" class="btn btn-danger"> Main Menu </a>
             <!-- debug !-->
-            <h3><?php   print_r($level); ?></h3>
+            <!--<h3><?php   print_r($levelstaple); ?></h3> debug !-->
         </div>
     </div>
 
