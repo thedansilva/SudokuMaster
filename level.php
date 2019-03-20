@@ -19,6 +19,7 @@
   $levelstaple = file_get_contents('levels/Level'.$levelnum.'ANS.txt'); //get STAPLE numbers for each table i.e numbers we need in order to solve the table/have ONE unique solution
   $level = preg_replace( "/\r|\n/", "", $level);
   $levelstaple = preg_replace( "/\r|\n/", "", $levelstaple);
+  $parseLeveltoJS = $level; // for JS parsing
   $level = explode(" ", $level); //convert numbers in the level to an array separated by " "
   $level = str_replace("\n", "", $level);
   //$level = str_replace(array("\r", "\n"), '', $level)
@@ -73,7 +74,7 @@
 
 	<div class="container">
 		<div class="jumbotron text-center">
-			<h1> SudokuMaster: L<?php echo $levelnum; ?> </h1>
+			<h1> SudokuMaster: L<span id='level'><?php echo $levelnum; ?></span> </h1>
 
 		</div>
 	</div>
@@ -114,6 +115,7 @@
       //  echo "\t\t".'</tr>'."\n";
         echo '<tr>';
         ?>
+
 		</table>
     <input type="submit" class="btn btn-primary"></button>
 	</form>
@@ -123,6 +125,8 @@
         </div>
 	</div>
 
+  <p onmousedown='return false;' onselectstart='return false;' style="font-size:0px;" id='answer'><?php echo $parseLeveltoJS ?></p>
+  <!-- for parsing the level's answer key to JS. undetectable by user.-->
 	<div class="row">
         <div class="col-sm-4">
             <h3> Hints: On </h3>
@@ -137,6 +141,5 @@
             <!--<h3><?php   print_r($levelstaple); ?></h3> debug !-->
         </div>
     </div>
-
   </body>
 </html>
