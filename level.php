@@ -17,8 +17,12 @@
   $hints = $_GET["hints"];
   $level = file_get_contents('levels/level'.$levelnum.'.txt'); //get the level requested
   $levelstaple = file_get_contents('levels/Level'.$levelnum.'ANS.txt'); //get STAPLE numbers for each table i.e numbers we need in order to solve the table/have ONE unique solution
+  $level = preg_replace( "/\r|\n/", "", $level);
+  $levelstaple = preg_replace( "/\r|\n/", "", $levelstaple);
   $level = explode(" ", $level); //convert numbers in the level to an array separated by " "
-  $levelstaple = explode(" ", $levelstaple);
+  $level = str_replace("\n", "", $level);
+  //$level = str_replace(array("\r", "\n"), '', $level)
+  $levelstaple = explode(" ", $levelstaple); //convert numbers in the level to an array separated by " "
   unset($level[count($level) - 1]); //last element is empty using this method; remove it
   unset($levelstaple[count($levelstaple) - 1]); //last element is empty using this method; remove it
   $diffString = "";
@@ -36,13 +40,14 @@
       if ($levelstaple[$x] == 0) {
         if (rand(0, $difficulty * 2) == 1) {
           return $level[$x].'"';
+          //return '"'; DEBUG
         }
       }
       if ($levelstaple[$x] == 1) {
-          return $level[$x].'" readonly';
+          return $level[$x].'" readonly style="color:blue;font-weight:bold"';
         } else {
           return '"';
-        }
+      }
   }
 ?>
 	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -98,14 +103,16 @@
         <?php
           $counter = 0; //counter for populating the table
           for ($x = 1; $x <= 9; $x++) {
-            echo "\t\t".'<tr>'."\n";
+            //echo "\t\t".'<tr>'."\n";
+            echo '<tr>';
             for ($y =1; $y <= 9; $y++) {
-				          echo "\t\t".'<td><input type="number" name="input'.$counter.'" min="1" max="9" value="'. fillCell($counter).'></td>'."\n";
+				          echo str_replace("\n", '', "\t\t".'<td><input type="number" name="input'.$counter.'" min="1" max="9" value="'.fillCell($counter).'></td>')."\n";
 				          //echo "\t\t".'<td><input type="number" name="'.$x.'-'.$y.'" min="1" max="9" value="'. fillCell($counter).'></td>'."\n";
                   $counter++;
           }
         }
-        echo "\t\t".'</tr>'."\n";
+      //  echo "\t\t".'</tr>'."\n";
+        echo '<tr>';
         ?>
 		</table>
     <input type="submit" class="btn btn-primary"></button>
