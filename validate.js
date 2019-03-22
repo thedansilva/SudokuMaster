@@ -1,6 +1,6 @@
 function validate() {
-    var inputs = document.getElementById("form").getElementsByTagName("input");
-    var level = document.getElementById("level").innerHTML; // get level
+  //  var inputs = document.getElementById("form").getElementsByTagName("input");
+    var inputs = document.querySelectorAll('input[type="number"]');
     var answer = document.getElementById('answer').innerHTML;
     var key = answer.split(" "); // arrayify answer by delimiting spaces
 

@@ -11,6 +11,7 @@ if(m<0){m=0; s="00";} // if time is depleted, do nothing
 
 document.getElementById('timer').innerHTML =
 m + ":" + s;
+document.getElementById('timer2').value = m + "m" + s;
 setTimeout(startTimer, 1000);
 }
 

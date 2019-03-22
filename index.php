@@ -71,12 +71,12 @@
               <option value="9">9</option>
               <option value="10">10</option>
             </select>
-          <h2> Hints:</h2>
+        <!--  <h2> Hints:</h2>
             <div class="form-group">
               <select class="form-control" name="hints">
               <option value="0">ON</option>
               <option value="1">OFF</option>
-              </select>
+            </select>-->
           <input type="submit" class="btn btn-warning"></a>
           </form>
         </div>

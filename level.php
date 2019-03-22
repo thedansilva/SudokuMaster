@@ -14,7 +14,7 @@
   $levelnum = $_GET["level"];
   $difficulty = $_GET["difficulty"];
   $diffset = 11 - $difficulty;
-  $hints = $_GET["hints"];
+//  $hints = $_GET["hints"];
   $level = file_get_contents('levels/level'.$levelnum.'.txt'); //get the level requested
   $levelstaple = file_get_contents('levels/Level'.$levelnum.'ANS.txt'); //get STAPLE numbers for each table i.e numbers we need in order to solve the table/have ONE unique solution
   $level = preg_replace( "/\r|\n/", "", $level);
@@ -44,7 +44,7 @@
           //return '"'; DEBUG
         }
       }
-      if ($levelstaple[$x] == 1) {
+      if ($levelstaple[$x] == 1 || $difficulty == 0) {
           return $level[$x].'" readonly style="color:blue;font-weight:bold"';
         } else {
           return '"';
@@ -74,7 +74,8 @@
 
 	<div class="container">
 		<div class="jumbotron text-center">
-			<h1> SudokuMaster: L<span id='level'><?php echo $levelnum; ?></span> </h1>
+      <form id="form" method="GET" onSubmit="return validate();" action="leaderboard.php">
+			<h1> SudokuMaster: L<input type="hidden" id='level' name='level' value='<?php echo $levelnum ?>'><?php echo $levelnum; ?></h1>
 
 		</div>
 	</div>
@@ -84,13 +85,15 @@
             <h3> Difficulty: <?php echo $diffString;?> </h3>
         </div>
         <div class="col-sm-4">
-              <h3> Time Remaining: <span onload="timer()" id="timer">Time</span></h3>
+              <h3> Time Remaining: <span onload="timer()" name="timer2" id="timer">Time</span></h3>
+              <input type="hidden" name="timer" id="timer2">
               <script src="timer.js" type="text/javascript"></script>
         </div>
         <div class="col-sm-4">
 			<br>
-            <a href="#" class="btn btn-danger"> Give Up </a>
-            <a href="#" class="btn btn-danger"> Give Hint </a>
+            <script src="giveUp.js" type="text/javascript"></script>
+            <button onclick="giveUp()" type="button" class="btn btn-danger"> Give Up </button>
+            <!--a href="#" class="btn btn-danger"> Give Hint </a-->
         </div>
     </div>
 
@@ -99,7 +102,6 @@
 
         </div>
         <div class="col-sm-4">
-    <form id="form" method="GET" onSubmit="return validate();" action="leaderboard.php">
 		<table class="center" height="520" width="520">
         <?php
           $counter = 0; //counter for populating the table
@@ -107,8 +109,8 @@
             //echo "\t\t".'<tr>'."\n";
             echo '<tr>';
             for ($y =1; $y <= 9; $y++) {
-				          echo str_replace("\n", '', "\t\t".'<td><input type="number" name="input'.$counter.'" min="1" max="9" value="'.fillCell($counter).'></td>')."\n";
-				          //echo "\t\t".'<td><input type="number" name="'.$x.'-'.$y.'" min="1" max="9" value="'. fillCell($counter).'></td>'."\n";
+				          echo str_replace("\n", '', "\t\t".'<td><input type="number" id="input'.$counter.'" min="1" max="9" value="'.fillCell($counter).'></td>')."\n";
+				          //echo str_replace("\n", '', "\t\t".'<td><input type="number" min="1" max="9" value="'.fillCell($counter).'></td>')."\n";
                   $counter++;
           }
         }
@@ -117,7 +119,7 @@
         ?>
 
 		</table>
-    <input type="submit" class="btn btn-primary"></button>
+    <input type="submit" class="btn btn-primary" id="submitButton" enabled></button>
 	</form>
 	</div>
         <div class="col-sm-4">
