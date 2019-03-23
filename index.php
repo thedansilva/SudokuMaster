@@ -26,9 +26,8 @@
 
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"> Stuff </a></li>
-					<li><a href="#"> Stuff </a></li>
-					<li><a href="#"> Stuff </a></li>
+          <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"> Contact </a></li>
+					<li><a href="https://vine.co/v/exDlqa6Y9et"> About Us </a></li>
 				</ul>
 			</div>
 		</div>
