@@ -10,22 +10,32 @@
     <link rel="stylesheet" type="text/css" href="tablestyle.css">
   </head>
 <?php
-  $levelnum = $_GET["level"];
-  $timer = $_GET["timer"];
-//  $hints = $_GET["hints"];
+  $username = $_GET["username"];
+  $userscore = $_GET["userscore"];
+  $levelnum = $_GET["levelValue"];
   $lboard = file_get_contents('levels/lboard'.$levelnum.'.txt');
   $lboard = preg_replace( "/\r|\n/", "", $lboard);
   $lboard = explode(" ", $lboard);
   unset($lboard[count($lboard) - 1]); //last element is empty using this method; remove it
   $names = [];
   $scores = [];
-  $y = 0;
-  $seconds = 300 - ($timer[0] * 60) + ($timer[2] * 10) + ($timer[3]);
-  $userScore = 10000 - (10 * $seconds);
   for ($y = 0; $y < 10; $y++) {
     $names[$y] = $lboard[$y * 2];
     $scores[$y] = $lboard[($y * 2) + 1];
   }
+  $x = 0;
+  $position = 0;
+  $scoreposted = false;
+  $output = "";
+  for($x = 0; $x < 10; $x++){
+    if ($userscore > $scores[$x] && !$scoreposted) {
+        $output .= $username." ".$userscore." "."\r\n";
+        $scoreposted = true;
+    } else {
+      $output .= $names[$position]." ".$scores[$position]." "."\r\n";
+      $position++;
+      }
+    }
 ?>
   <body>
 	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -57,36 +67,9 @@
         </div>
         <div class="col-sm-4">
 			<table width="500" height="500" class="center">
-      <form id="submitScore" method="GET" onSubmit="return addScore();" action="submit.php">
-				<tr>
-					<th> Position </th>
-					<th> Name </th>
-					<th> Score </th>
-				</tr>
-        <input type="hidden" name='levelValue' value=<?php echo $levelnum?>>
-        <?php
-        $x = 0;
-        $position = 0;
-        $scoreposted = false;
-        for($x = 0; $x < 10; $x++){
-          echo '<tr><td>';
-          if ($userScore > $scores[$x] && !$scoreposted) {
-              echo  $x+1 .'</td>';
-              echo '<td> <input type="text" name="username" maxlength=3 style="text-align:center;"> </td>';
-              echo '<td> <input type="text" name="userscore" value="'.$userScore.'" readonly style="text-align:center;"> </td>';
-              $scoreposted = true;
-          } else {
-          echo  $x+1 .'</td>';
-          echo '<td><span value="'.$names[$position].'">'.$names[$position] .'</span></td>';
-          echo '<td><span value="'.$scores[$position].'">'.$scores[$position].'</span></td>';
-          $position++;
-        }
-          echo '</tr>';
-        }
-        ?>
-			</table>
-    <input type="submit" class="btn btn-primary" id="submitButton" enabled></button>
-    </form>
+        <h1>Your score has been submitted, <?php echo $username?>. Thank you for playing!</h1>
+        <!--debug h1><?php echo nl2br($output)?></h1-->
+        <?php file_put_contents('levels/lboard'.$levelnum.'.txt', (rtrim($output)." "));?>
 		</div>
 		<div class="col-sm-4">
 		</div>
