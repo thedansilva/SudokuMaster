@@ -12,7 +12,7 @@ The first page of the application you will see is a menu page that will ask you 
 
 This first page also includes an about and contact us button for the pleasure of the users.
 
-![](https://imgur.com/ZqI7PKI) 
+![](https://imgur.com/ZqI7PKI.jpg) 
 
 ## Game Board
 
@@ -20,7 +20,7 @@ On the second page, the Sudoku board will generate a puzzle according to the dif
 
 The board also features a "Give Up" button that will display the solution to the user if the user is not able to finish the puzzle.
 
-![](https://imgur.com/a/ajmlWjM)
+![](https://imgur.com/a/ajmlWjM.jpg)
 
 ## Score
 
