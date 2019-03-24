@@ -30,4 +30,8 @@ The User's Score is calculated according to the time it takes the user to submit
 
 Difficulty is assessed in levels, with level one having a greater number of tiles filled in to allow quicker and easier solution of the puzzle.
 
+Game board generated at the easiest difficulty:
+
 ![](https://imgur.com/TlJUFLy.png)
+
+
