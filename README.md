@@ -5,7 +5,7 @@ SudokuMaster is a web based application that allows users to enjoy the game of S
 Sudoku is a logic based, number based puzzle. 
 
 ### Rules of Sudoku
-The objective of the game is to fill a 9×9 grid with digits so that each column, each row, and each of the nine 3×3 subgrids that compose the grid ontain all of the digits from 1 to 9. 
+The objective of the game is to fill a 9×9 grid with digits so that each column, each row, and each of the nine 3×3 subgrids that compose the grid obtain all of the digits from 1 to 9. 
 
 ## Getting Started
 The first page of the application you will see is a menu page that will ask you to select level and difficulty so that a puzzle can be tailored to the users specific needs. 
