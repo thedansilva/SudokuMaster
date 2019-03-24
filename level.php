@@ -130,10 +130,8 @@
   <!-- for parsing the level's answer key to JS. undetectable by user.-->
 	<div class="row">
         <div class="col-sm-4">
-            <h3> Hints: On </h3>
         </div>
         <div class="col-sm-4">
-            <h3> Hints Used: 1 </h3>
         </div>
         <div class="col-sm-4">
 			<br>
