@@ -28,3 +28,6 @@ The User's Score is calculated according to the time it takes the user to submit
 
 ### Difficulty
 
+Difficulty is assessed in levels, with level one having a greater number of tiles filled in to allow quicker and easier solution of the puzzle.
+
+![](https://imgur.com/a/MqV9QpJ.jpg)
