@@ -11,10 +11,10 @@
   </head>
   <body>
 <?php
-  $levelnum = $_GET["level"];
-  $difficulty = $_GET["difficulty"];
+  $levelnum = $_POST["level"];
+  $difficulty = $_POST["difficulty"];
   $diffset = 11 - $difficulty;
-//  $hints = $_GET["hints"];
+//  $hints = $_POST["hints"];
   $level = file_get_contents('levels/level'.$levelnum.'.txt'); //get the level requested
   $levelstaple = file_get_contents('levels/Level'.$levelnum.'ANS.txt'); //get STAPLE numbers for each table i.e numbers we need in order to solve the table/have ONE unique solution
   $level = preg_replace( "/\r|\n/", "", $level);
@@ -73,7 +73,7 @@
 
 	<div class="container">
 		<div class="jumbotron text-center">
-      <form id="form" method="GET" onSubmit="return validate();" action="leaderboard.php">
+      <form id="form" method="POST" onSubmit="return validate();" action="leaderboard.php">
 			<h1> SudokuMaster: L<input type="hidden" id='level' name='level' value='<?php echo $levelnum ?>'><?php echo $levelnum; ?></h1>
 
 		</div>

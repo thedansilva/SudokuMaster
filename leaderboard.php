@@ -10,9 +10,9 @@
     <link rel="stylesheet" type="text/css" href="tablestyle.css">
   </head>
 <?php
-  $levelnum = $_GET["level"];
-  $timer = $_GET["timer"];
-//  $hints = $_GET["hints"];
+  $levelnum = $_POST["level"];
+  $timer = $_POST["timer"];
+//  $hints = $_POST["hints"];
   $lboard = file_get_contents('levels/lboard'.$levelnum.'.txt');
   $lboard = preg_replace( "/\r|\n/", "", $lboard);
   $lboard = explode(" ", $lboard);
@@ -56,7 +56,7 @@
         </div>
         <div class="col-sm-4">
 			<table width="500" height="500" class="center">
-      <form id="submitScore" method="GET" onSubmit="return addScore();" action="submit.php">
+      <form id="submitScore" method="POST" onSubmit="return addScore();" action="submit.php">
 				<tr>
 					<th> Position </th>
 					<th> Name </th>

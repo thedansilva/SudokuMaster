@@ -41,7 +41,7 @@
 
 	<div class="center">
         <div class="col-sm-4 col-sm-offset-4">
-          <form id="form" method="GET" action="level.php">
+          <form id="form" method="POST" action="level.php">
           <h2>Level:</h2>
           <div class="form-group">
             <select class="form-control" name="level">

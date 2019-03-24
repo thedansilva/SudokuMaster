@@ -10,9 +10,9 @@
     <link rel="stylesheet" type="text/css" href="tablestyle.css">
   </head>
 <?php
-  $username = $_GET["username"];
-  $userscore = $_GET["userscore"];
-  $levelnum = $_GET["levelValue"];
+  $username = $_POST["username"];
+  $userscore = $_POST["userscore"];
+  $levelnum = $_POST["levelValue"];
   $lboard = file_get_contents('levels/lboard'.$levelnum.'.txt');
   $lboard = preg_replace( "/\r|\n/", "", $lboard);
   $lboard = explode(" ", $lboard);
