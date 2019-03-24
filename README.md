@@ -24,4 +24,4 @@ The board also features a "Give Up" button that will display the solution to the
 
 ## Score
 
-The User's Score is calculated according to the time it takes the user to submit all correct entries of the puzzle. 
+The User's Score is calculated according to the time it takes the user to submit all correct entries of the puzzle. If the user runs out of time or if the user gives up, they will recieve a score of 0.
