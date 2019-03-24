@@ -20,7 +20,7 @@ On the second page, the Sudoku board will generate a puzzle according to the dif
 
 The board also features a "Give Up" button that will display the solution to the user if the user is not able to finish the puzzle.
 
-![](https://imgur.com/o8Y3day.jpg)
+![](https://i.imgur.com/8khtyxX.png)
 
 ## Score
 
