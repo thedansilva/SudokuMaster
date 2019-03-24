@@ -24,7 +24,7 @@ The board also features a "Give Up" button that will display the solution to the
 
 There are two different types of numbers that are generated on the board: Bolded blue numbers, and regular font numbers. The regular font numbers are the numbers that are generated in place upon the board depending on the users selection of difficulty from the main page of the game. The bolded blue numbers are the numbers that are always placed on the board to allow the players to be able to start the puzzle and are integral to the specific solution of the puzzle. 
 
-### Score
+### Score Difficulty
 
 The User's Score is calculated according to the time it takes the user to submit all correct entries of the puzzle. If the user runs out of time or if the user gives up, they will recieve a score of 0.
 
