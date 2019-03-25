@@ -21,7 +21,7 @@ This first page also includes both an 'about' and 'contact us' button for any qu
 
 ### Setting up the game
 1. Open index.php on a locally hosted server (WAMP, etc).
-2. Navigate to the "level" and "difficulty" selection.
+2. Navigate to the "level" and "difficulty" selection. (both shown above)
 3. Once the game difficulty and level are specified, the user is able to "create new game".
 4. The game board now appears and SudokuMaster may be played.
 
