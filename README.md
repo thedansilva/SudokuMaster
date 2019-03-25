@@ -79,8 +79,8 @@ Once you submit all the correct values for the game board, it will take you to t
 ![](https://imgur.com/A1LJJGg.png)
 
 ### Submitting score to leaderboard
-(how the user submits their score)  
-To submit score, enter your name to the leaderboard beside your score. 
+ 
+To submit score, you must submit a complete and correct solution to the puzzle, the program will then prompt the user to enter the name to the leaderboard beside your score. 
 
 ![](https://imgur.com/l0JAyv5.png)
  
