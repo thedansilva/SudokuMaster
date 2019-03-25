@@ -62,7 +62,7 @@ There are only 3 non-bolded numbers at the hardest difficulty, creating a harder
  
 To submit a table, user must enter all values for empty tiles on the game board and make sure that all the tiles are filled. This is an example of a filled game board:
 
-![]https://i.imgur.com/KoStTvI.png)
+![](https://i.imgur.com/KoStTvI.png)
 
 
  
@@ -86,7 +86,7 @@ The give up button allows users to essentially stop playing and display the solu
 
 ![](https://i.imgur.com/aVf9hgy.png)
 
-This allows players to solve the puzzle, however, it will lock out the use of the submit button, as the solution has been displayed already. 
+This allows players to solve the puzzle, however, it will lock out the user of the submit button as the solution has been displayed already. 
 
 ![](https://imgur.com/MUTSshX.png)
 
