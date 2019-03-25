@@ -2,9 +2,8 @@
 SudokuMaster is a web based application that allows users to enjoy the mind testing game of Sudoku. This application features a variety of unique puzzles, each with a range of difficulties that can help any user learn and master this game. 
 
 ### Requirements
-- Wamp server
-- Wamp requires a windows operating system
-- Browser
+- WAMP server (requires Windows operating system.)
+- Web browser
 - Primary input devices
 
 ### What is Sudoku?
@@ -63,7 +62,7 @@ There are only 3 non-bolded numbers at the hardest difficulty, creating a harder
  
 To submit a table, user must enter all values for empty tiles on the game board and make sure that all the tiles are filled. This is an example of a filled game board:
 
-![](https://imgur.com/XAB6AmW.png)
+![]https://i.imgur.com/KoStTvI.png)
 
 
  
@@ -75,8 +74,6 @@ Once the user enters all values for the game board, they must be correct or you 
 Once you submit all the correct values for the game board, it will take you to the leaderboard page where it will display your score and prompt you to enter your username to display your score on the leaderboard. 
 
 ![](https://imgur.com/XAB6AmW.png)
-
-![](https://imgur.com/A1LJJGg.png)
 
 ### Submitting score to leaderboard
  
