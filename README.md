@@ -1,5 +1,5 @@
 # SudokuMaster
-SudokuMaster is a web based application that allows users to enjoy the game of Sudoku, featuring many puzzles, difficulties and great variety. 
+SudokuMaster is a web based application that allows users to enjoy the mind testing game of Sudoku. This application features a variety of unique puzzles, each with a range of difficulties that can help any user learn and master this game. 
 
 ### Requirements
 - Wamp server
