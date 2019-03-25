@@ -7,7 +7,7 @@ SudokuMaster is a web based application that allows users to enjoy the mind test
 - Primary input devices
 
 ### What is Sudoku?
-Sudoku is a logic based, number based puzzle. 
+Sudoku is a logic based, number based puzzle. Players must fill each row, column, and 3x3 square with the numbers 1-9 without repetition.
 
 ### Rules of Sudoku
 The objective of the game is to fill a 9×9 grid with digits so that each column, each row, and each of the nine 3×3 subgrids that compose the grid obtain all of the digits from 1 to 9. 
