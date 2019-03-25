@@ -2,9 +2,9 @@
 SudokuMaster is a web based application that allows users to enjoy the game of Sudoku, featuring many puzzles, difficulties and great variety. 
 
 ### Requirements
-- wamp server
-- browser
-- 
+- Wamp server
+- Browser
+- Primary input devices
 
 ### What is Sudoku?
 Sudoku is a logic based, number based puzzle. 
@@ -13,9 +13,9 @@ Sudoku is a logic based, number based puzzle.
 The objective of the game is to fill a 9×9 grid with digits so that each column, each row, and each of the nine 3×3 subgrids that compose the grid obtain all of the digits from 1 to 9. 
 
 ### Getting Started
-The first page of the application you will see is a menu page that will ask you to select level and difficulty so that a puzzle can be tailored to the users specific needs. 
+The first page of the application you will see is a menu page that will ask you to select level and difficulty (both with a scale ranging from 1 to 10) so that each puzzle can be tailored to the users specific needs. 
 
-This first page also includes an about and contact us button for the pleasure of the users.
+This first page also includes both an 'about' and 'contact us' button for any questions and(or) future reccomendations for the creators.
 
 ![](https://imgur.com/ZqI7PKI.jpg) 
 
