@@ -1,6 +1,11 @@
 # SudokuMaster
 SudokuMaster is a web based application that allows users to enjoy the game of Sudoku, featuring many puzzles, difficulties and great variety. 
 
+### Requirements
+wamp server
+browser
+etc
+
 ### What is Sudoku?
 Sudoku is a logic based, number based puzzle. 
 
@@ -14,9 +19,17 @@ This first page also includes an about and contact us button for the pleasure of
 
 ![](https://imgur.com/ZqI7PKI.jpg) 
 
+### Setting up the game
+1. Open index.php on a locally hosted server (WAMP, etc).
+2. Navigate to the "level" and "difficulty" selection.
+3. etc.
+4. etc.
+5. etc.
+
 ### Game Board
 
-On the second page, the Sudoku board will generate a puzzle according to the difficulty and level setting chosen from the first page. The game board is free for user input and users can input solutions into each individual cell. 
+On the second page (level.php), the Sudoku board will generate a puzzle according to the difficulty and level setting chosen from the first page. The game board is free for user input and users can input solutions into each individual cell. 
+Level.php grabs the user's input for level and difficulty and returns a Sudoku table of the level found in levels/.
 
 The board also features a "Give Up" button that will display the solution to the user if the user is not able to finish the puzzle.
 
@@ -26,7 +39,9 @@ There are two different types of numbers that are generated on the board: Bolded
 
 ### Score
 
-The User's Score is calculated according to the time it takes the user to submit all correct entries of the puzzle. If the user runs out of time or if the user gives up, they will recieve a score of 0.
+The User's Score is calculated according to the time it takes the user to submit all correct entries of the puzzle. The score is calculated as follows:  
+10000 - (10t),
+Where t is the time taken to complete the game, in seconds.  
 
 ### Difficulty
 
@@ -43,3 +58,17 @@ Game board generated at the hardest difficulty:
 ![](https://imgur.com/mD9hIKp.png)
 
 There are only 3 non-bolded numbers at the hardest difficulty, creating a harder challenge for players who are adept at puzzles and would enjoy higher difficulties.
+
+### Submitting table
+(how the user submits the table)
+(what happens if they're wrong)
+(what happens if they're correct i.e leads to leaderboard.php with their score etc)
+
+### Submitting score to leaderboard
+(how the user submits their score)
+(limitations on name)
+
+### Giving up
+(how the user gives up)
+(how the game shows them they've given up)
+(what happens after i.e submit button disabled)
