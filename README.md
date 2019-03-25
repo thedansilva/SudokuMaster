@@ -2,9 +2,9 @@
 SudokuMaster is a web based application that allows users to enjoy the game of Sudoku, featuring many puzzles, difficulties and great variety. 
 
 ### Requirements
-wamp server
-browser
-etc
+- wamp server
+- browser
+- 
 
 ### What is Sudoku?
 Sudoku is a logic based, number based puzzle. 
@@ -22,9 +22,8 @@ This first page also includes an about and contact us button for the pleasure of
 ### Setting up the game
 1. Open index.php on a locally hosted server (WAMP, etc).
 2. Navigate to the "level" and "difficulty" selection.
-3. etc.
-4. etc.
-5. etc.
+3. Once the game difficulty and level are specified, the user is able to "create new game".
+4. The game board now appears and SudokuMaster may be played.
 
 ### Game Board
 
