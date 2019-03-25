@@ -60,15 +60,15 @@ Game board generated at the hardest difficulty:
 There are only 3 non-bolded numbers at the hardest difficulty, creating a harder challenge for players who are adept at puzzles and would enjoy higher difficulties.
 
 ### Submitting table
-(how the user submits the table)
-(what happens if they're wrong)
-(what happens if they're correct i.e leads to leaderboard.php with their score etc)
+(how the user submits the table)  
+(what happens if they're wrong)  
+(what happens if they're correct i.e leads to leaderboard.php with their score etc)  
 
 ### Submitting score to leaderboard
-(how the user submits their score)
-(limitations on name)
+(how the user submits their score)  
+(limitations on name)  
 
 ### Giving up
-(how the user gives up)
-(how the game shows them they've given up)
-(what happens after i.e submit button disabled)
+(how the user gives up)  
+(how the game shows them they've given up)  
+(what happens after i.e submit button disabled)  
