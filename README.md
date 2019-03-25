@@ -73,8 +73,6 @@ Once the user enters all values for the game board, they must be correct or you 
 
 Once you submit all the correct values for the game board, it will take you to the leaderboard page where it will display your score and prompt you to enter your username to display your score on the leaderboard. 
 
-![](https://imgur.com/XAB6AmW.png)
-
 ### Submitting score to leaderboard
  
 To submit score, you must submit a complete and correct solution to the puzzle, the program will then prompt the user to enter the name to the leaderboard beside your score. 
@@ -86,7 +84,7 @@ Usernames for scores on the leaderboard must be three characters long.
 ### Giving up
 The give up button allows users to essentially stop playing and display the solutions to the user, the solutions are displayed in a prompt. 
 
-![](https://imgur.com/qkt8L5C.png)
+![](https://i.imgur.com/aVf9hgy.png)
 
 This allows players to solve the puzzle, however, it will lock out the use of the submit button, as the solution has been displayed already. 
 
