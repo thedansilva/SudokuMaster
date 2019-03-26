@@ -90,5 +90,3 @@ This allows players to solve the puzzle, however, it will lock out the user of t
 
 ![](https://imgur.com/MUTSshX.png)
 
-
-  
