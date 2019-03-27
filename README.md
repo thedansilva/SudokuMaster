@@ -79,7 +79,7 @@ To submit score, you must submit a complete and correct solution to the puzzle, 
 
 ![](https://imgur.com/l0JAyv5.png)
  
-Usernames for scores on the leaderboard must be three characters long.
+Usernames/initials for scores on the leaderboard must be three characters long.
 
 ### Giving up
 The give up button allows users to essentially stop playing and display the solutions to the user, the solutions are displayed in a prompt. 
